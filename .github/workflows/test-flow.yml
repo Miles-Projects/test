@@ -2,6 +2,14 @@ name: Test Github Action workflo_dispatch
 
 on:
   workflow_dispatch: # This is required for manual triggering
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
 
 jobs:
   merge-dev-staging:
