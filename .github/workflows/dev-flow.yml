@@ -1,0 +1,19 @@
+name: Staging
+
+on:
+  workflow_dispatch: # This is required for manual triggering
+    inputs:
+      branch:
+        description: 'deploy to staging'
+        required: true
+
+jobs:
+  merge-dev-staging:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout all branches
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
