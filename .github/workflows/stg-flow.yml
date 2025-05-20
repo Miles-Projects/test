@@ -1,10 +1,14 @@
-name: Test Github Action workflo_dispatch
+name: Production
 
 on:
   workflow_dispatch: # This is required for manual triggering
+    inputs:
+      branch:
+        description: 'deploy to master'
+        required: true
 
 jobs:
-  merge-dev-staging:
+  merge-staging-production:
     runs-on: ubuntu-latest
 
     steps:
