@@ -17,3 +17,15 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+
+      - name: Notify Slack - Merge branch
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.PRODUCTION_SLACK_WEBHOOK }}
+          SLACK_CHANNEL: ${{ vars.PRODUCTION_SLACK_CHANNEL }}
+          SLACK_COLOR: '#1fe04c'
+          SLACK_ICON: https://github.com/github.png?size=48
+          SLACK_MESSAGE: '✅ Merged develop into staging branch'
+          SLACK_TITLE: 'Status'
+          SLACK_USERNAME: 'GitHub Actions (production)'
+          SLACK_FOOTER: 'more detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
